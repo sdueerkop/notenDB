@@ -1,21 +1,24 @@
-import sys
+#import sys
 from PyQt4 import QtGui, QtCore
+import sys
 
 import functions
-from notdb import *
+#from notdb import *
+from config import *
 
 class Window(QtGui.QMainWindow):
 
     def __init__(self):
         super(Window, self).__init__()
         self.setWindowTitle("Notenausgabe")
+        self.fach = "UNDEFINED"
         self.setupForm()
 
 
     def submit(self):
         #print("Submit Button was pressed.")
         self.s = str(self.schuelerListe.currentText())
-        self.f = str(self.fach.currentText()) 
+        self.f = str(self.fachMenu.currentText()) 
         avg, name, halbjahr, jahr = functions.notenDurchschnittSchueler(self.s, self.f)
         self.show_output.setText("Notendurchschnitt für {} im Fach {} im\
  {}. Halbjahr ({}): {}".format(name, self.f, halbjahr, jahr, str(avg)))
@@ -36,8 +39,9 @@ class Window(QtGui.QMainWindow):
         self.schuelerListe.addItems(schuelerInnen)
 
         self.l4 = QtGui.QLabel("Fach")
-        self.fach = QtGui.QComboBox()
-        self.fach.addItems(FAECHER)
+        self.fachMenu = QtGui.QComboBox()
+        self.fachMenu.addItems(FAECHER)
+
 
         self.submitBtn = QtGui.QPushButton("Submit")
         self.submitBtn.clicked.connect(self.submit)
@@ -51,7 +55,7 @@ class Window(QtGui.QMainWindow):
         # Set up Layout, add items defined above
         self.fbox = QtGui.QFormLayout()
         self.fbox.addRow(self.l3, self.schuelerListe)
-        self.fbox.addRow(self.l4, self.fach)
+        self.fbox.addRow(self.l4, self.fachMenu)
         self.fbox.addRow(self.submitBtn,self.cancelBtn)
         self.fbox.addRow(self.show_output)
 

@@ -2,10 +2,12 @@ import argparse
 import sys
 
 import writeMenu
+import readMenu
 import functions
 
-DATABASE = 'test.db'
-FAECHER = ['Deutsch', 'Musik']
+
+#DATABASE = 'test.db'
+#FAECHER = ['Deutsch', 'Musik']
 
 def cli():
     parser = argparse.ArgumentParser()
@@ -28,9 +30,10 @@ def main():
     action = cli()
     if action == "add":
         writeMenu.callWriteMenu()
+    elif action == "extract":
+        readMenu.callReadMenu()
     else:
-        print("Functionality not implemented yet. Sorry.")
-        sys.exit(1)
+        print("Functionality missing.")
 
 if __name__ == '__main__':
     main()

@@ -4,7 +4,8 @@ import datetime
 import random
 import re
 
-from notdb import *
+#from notdb import *
+from config import *
 
 # Die Abkürzung 'lot' in Variablennamen steht hier für 'List of Tuples'
 
@@ -56,7 +57,7 @@ def notenDurchschnittSchueler(tableName, fach):
     conn.close()
     noten = []
     for n, f in notenUndFaecher:
-        if f == fach:
+        if f == fach and not n == 'unbenotet':
             noten.append(int(n))
     avg = sum(noten) / len(noten)
     halbjahr = re.search(r'_(\d)$', tableName).group(1)
