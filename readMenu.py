@@ -19,7 +19,7 @@ class Window(QtGui.QMainWindow):
         self.f = str(self.fachMenu.currentText()) 
         avg, name, halbjahr, jahr = functions.notenDurchschnittSchueler(self.s, self.f)
         self.show_output.setText("Notendurchschnitt für {} im Fach {} im\
- {}. Halbjahr ({}): {}".format(name, self.f, halbjahr, jahr, str(avg)))
+ {}. Halbjahr ({}): {}".format(name, self.f, halbjahr, jahr, avg))
 
     def cancel(self):
         print("Action canceled. Exiting...")

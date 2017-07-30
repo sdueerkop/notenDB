@@ -58,7 +58,7 @@ def notenDurchschnittSchueler(tableName, fach):
     for n, f in notenUndFaecher:
         if f == fach and not n == 'unbenotet':
             noten.append(int(n))
-    avg = sum(noten) / len(noten)
+    avg = round(sum(noten) / len(noten), 1)
     halbjahr = re.search(r'_(\d)$', tableName).group(1)
 #    halbjahr = m.group(1)
     jahr = re.search(r'\d\d\d\d', tableName).group(0)
