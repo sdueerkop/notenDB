@@ -1,48 +1,55 @@
 import sys
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-import functions # File in same dir
+from PyQt4 import QtGui, QtCore
 
-def window():
-    app = QApplication(sys.argv)
-    win = QWidget()
+class Window(QtGui.QMainWindow):
 
-    # Define the items in the rows
+    def __init__(self):
+        super(Window, self).__init__()
+        self.setWindowTitle("PyQT tuts!")
+        self.setupForm()
+#        self.show()
 
-    l1 = QLabel("Name")
-    nm = QLineEdit()
+    def setupForm(self):
 
-    l2 = QLabel("Leistung")
-    add1 = QLineEdit()
+        self.win = QtGui.QWidget()
+        # Define the items in the rows
 
-    l3 = QLabel("Note")
-    dropDown = QComboBox()
-    dropDown.addItem("1")
-    dropDown.addItem("2")
-    dropDown.addItem("3")
-    dropDown.addItem("4")
-    dropDown.addItem("5")
-    dropDown.addItem("6")
+        self.l1 = QtGui.QLabel("Name")
+        self.nm = QtGui.QLineEdit()
 
-    submitBtn = QPushButton("Submit")
-    text = str(dropDown.currentText())
-    submitBtn.clicked.connect(functions.submit)
+        self.l2 = QtGui.QLabel("Leistung")
+        self.add1 = QtGui.QLineEdit()
 
-    cancelBtn = QPushButton("Cancel")
-    cancelBtn.clicked.connect(functions.cancel)
+        self.l3 = QtGui.QLabel("Note")
+        self.dropDown = QtGui.QComboBox()
+        self.dropDown.addItem("1")
+        self.dropDown.addItem("2")
+        self.dropDown.addItem("3")
+        self.dropDown.addItem("4")
+        self.dropDown.addItem("5")
+        self.dropDown.addItem("6")
 
-    # Set up Layout, add items defined above
-    fbox = QFormLayout()
-    fbox.addRow(l1,nm)
-    fbox.addRow(l2,add1)
-    fbox.addRow(l3, dropDown)
-    fbox.addRow(submitBtn,cancelBtn)
+        self.submitBtn = QtGui.QPushButton("Submit")
+       # self.submitBtn.clicked.connect(functions.submit)
 
-    # Get ready and display the complete window
-    win.setLayout(fbox)
-    win.setWindowTitle("Form Experiments")
-    win.show()
+        self.cancelBtn = QtGui.QPushButton("Cancel")
+       # self.cancelBtn.clicked.connect(functions.cancel)
+
+        # Set up Layout, add items defined above
+        self.fbox = QtGui.QFormLayout()
+        self.fbox.addRow(self.l1,self.nm)
+        self.fbox.addRow(self.l2,self.add1)
+        self.fbox.addRow(self.l3, self.dropDown)
+        self.fbox.addRow(self.submitBtn,self.cancelBtn)
+
+        self.win.setLayout(self.fbox)
+        self.win.show()
+
+def run():
+    app = QtGui.QApplication(sys.argv)
+    GUI = Window()
     sys.exit(app.exec_())
 
-if __name__ == '__main__':
-    window()
+
+
+run()
