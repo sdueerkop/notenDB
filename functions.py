@@ -4,7 +4,6 @@ import datetime
 import random
 import re
 
-#from notdb import *
 from config import *
 
 # Die Abkürzung 'lot' in Variablennamen steht hier für 'List of Tuples'

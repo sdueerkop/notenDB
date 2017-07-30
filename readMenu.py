@@ -1,9 +1,7 @@
-#import sys
 from PyQt4 import QtGui, QtCore
 import sys
 
 import functions
-#from notdb import *
 from config import *
 
 class Window(QtGui.QMainWindow):
