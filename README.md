@@ -6,3 +6,4 @@ Skript zum Festhalten und Abrufen von SchülerInnen-Noten in verschiedenen Fäch
 
 - Funktion für das Abrufen eines Klassendurchschnitts für eine bestimmte Prüfung.
 - Erweiterung auf Kompetenzraster.
+- Inputvalidierung
