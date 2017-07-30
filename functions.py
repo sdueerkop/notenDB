@@ -1,5 +1,6 @@
-def submit():
-    print("Submit Button was pressed.")
-
-def cancel():
-    print("Cancel Button was pressed.")
+def storeData(name, klasse, leistung, note, anmerkungen):
+    print("Name:", name)
+    print("Klasse:", klasse)
+    print("Leistung:", leistung)
+    print("Note:", note)
+    print("Anmerkungen:", anmerkungen)
