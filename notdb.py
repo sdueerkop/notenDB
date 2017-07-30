@@ -5,10 +5,6 @@ import writeMenu
 import readMenu
 import functions
 
-
-#DATABASE = 'test.db'
-#FAECHER = ['Deutsch', 'Musik']
-
 def cli():
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group()

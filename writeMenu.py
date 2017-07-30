@@ -58,8 +58,8 @@ class Window(QtGui.QMainWindow):
     def setupForm(self):
 
         self.win = QtGui.QWidget()
-        # Define the items in the rows
 
+        # Define the items in the rows
         self.l1 = QtGui.QLabel("Name")
         self.nm = QtGui.QLineEdit()
 

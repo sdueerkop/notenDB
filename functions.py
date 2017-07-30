@@ -8,7 +8,6 @@ from config import *
 
 # Die Abkürzung 'lot' in Variablennamen steht hier für 'List of Tuples'
 
-
 def storeData(name, klasse, fach, leistung, note, anmerkungen):
     conn = sqlite3.connect(DATABASE)
     c = conn.cursor()
@@ -31,6 +30,7 @@ def getTableNames():
 
     conn = sqlite3.connect(DATABASE)
     c = conn.cursor()
+
     # Get all table names in the database
     c.execute("SELECT name FROM sqlite_master WHERE type='table'")
     lot_tableNames = c.fetchall()
@@ -60,7 +60,6 @@ def notenDurchschnittSchueler(tableName, fach):
             noten.append(int(n))
     avg = round(sum(noten) / len(noten), 1)
     halbjahr = re.search(r'_(\d)$', tableName).group(1)
-#    halbjahr = m.group(1)
     jahr = re.search(r'\d\d\d\d', tableName).group(0)
     return avg, name, halbjahr, jahr
 
@@ -71,7 +70,7 @@ def notenDurchschnittKlasse(klasse, halbjahr, leistung):
 def main():
 
     # For testing purposes only
-#    storeData('Hanna Schmidt', '10a', 'Fach', 'Präsentation', 1, 'Anmerkungen')
+    storeData('Hanna Schmidt', '10a', 'Fach', 'Präsentation', 1, 'Anmerkungen')
 
     tables = getTableNames()
     print(tables)

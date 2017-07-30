@@ -9,12 +9,10 @@ class Window(QtGui.QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
         self.setWindowTitle("Notenausgabe")
-        self.fach = "UNDEFINED"
         self.setupForm()
 
 
     def submit(self):
-        #print("Submit Button was pressed.")
         self.s = str(self.schuelerListe.currentText())
         self.f = str(self.fachMenu.currentText()) 
         avg, name, halbjahr, jahr = functions.notenDurchschnittSchueler(self.s, self.f)
@@ -28,6 +26,7 @@ class Window(QtGui.QMainWindow):
     def setupForm(self):
 
         self.win = QtGui.QWidget()
+
         # Define the items in the rows
 
         schuelerInnen = functions.getTableNames()
