@@ -66,6 +66,7 @@ class Window(QtGui.QMainWindow):
 
         self.l3 = QtGui.QLabel("Note")
         self.notenMenu = QtGui.QComboBox()
+        self.notenMenu.addItem("unbenotet")
         self.notenMenu.addItem("1")
         self.notenMenu.addItem("2")
         self.notenMenu.addItem("3")

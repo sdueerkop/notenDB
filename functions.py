@@ -12,7 +12,7 @@ def storeData(name, klasse, fach, leistung, note, anmerkungen):
     month = int(datetime.datetime.fromtimestamp(unix).strftime('%m'))
     halbjahr = "1" if (month < 2 and month >= 8) else "2"
     tableName = "{}_{}_{}".format(name.replace(' ', ''), year, halbjahr)
-    c.execute('CREATE TABLE IF NOT EXISTS ' + tableName + ' (unix REAL, datestamp TEXT, name TEXT, klasse TEXT, fach TEXT, leistung TEXT, note REAL, anmerkungen TEXT )') 
+    c.execute('CREATE TABLE IF NOT EXISTS ' + tableName + ' (unix REAL, datestamp TEXT, name TEXT, klasse TEXT, fach TEXT, leistung TEXT, note TEXT, anmerkungen TEXT )') 
     c.execute("INSERT INTO " + tableName + " (unix, datestamp, name, klasse, fach, leistung, note, anmerkungen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                                              (unix, date, name, klasse, fach, leistung, note, anmerkungen)) 
 
