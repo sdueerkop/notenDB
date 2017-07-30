@@ -2,8 +2,11 @@ import sqlite3
 import time
 import datetime
 import random
+import re
 
 from notdb import *
+
+# Die Abkürzung 'lot' in Variablennamen steht hier für 'List of Tuples'
 
 
 def storeData(name, klasse, fach, leistung, note, anmerkungen):
@@ -23,13 +26,55 @@ def storeData(name, klasse, fach, leistung, note, anmerkungen):
     c.close()
     conn.close()
 
-def getData():
+
+def getTableNames():
+
+    conn = sqlite3.connect(DATABASE)
+    c = conn.cursor()
+    # Get all table names in the database
+    c.execute("SELECT name FROM sqlite_master WHERE type='table'")
+    lot_tableNames = c.fetchall()
+    c.close()
+    conn.close()
+    
+    tableNames = []
+    for t in lot_tableNames:
+        tableNames.append(t[0])
+    
+    return sorted(tableNames)
+
+def notenDurchschnittSchueler(tableName, fach):
+
+    conn = sqlite3.connect(DATABASE)
+    c = conn.cursor()
+    c.execute("SELECT Name FROM " + tableName )
+    l_name = c.fetchall()
+    name = l_name[0][0]
+    c.execute("SELECT Note, Fach FROM " + tableName )
+    notenUndFaecher = c.fetchall()
+    c.close()
+    conn.close()
+    noten = []
+    for n, f in notenUndFaecher:
+        if f == fach:
+            noten.append(int(n))
+    avg = sum(noten) / len(noten)
+    halbjahr = re.search(r'_(\d)$', tableName).group(1)
+#    halbjahr = m.group(1)
+    jahr = re.search(r'\d\d\d\d', tableName).group(0)
+    return avg, name, halbjahr, jahr
+
+def notenDurchschnittKlasse(klasse, halbjahr, leistung):
+    # return max, min, mean
     pass
 
 def main():
 
     # For testing purposes only
-    storeData('Jöchen Michäel Ding', '10a', 'Fach', 'Leistung', 1, 'Anmerkungen')
+#    storeData('Hanna Schmidt', '10a', 'Fach', 'Präsentation', 1, 'Anmerkungen')
+
+    tables = getTableNames()
+    print(tables)
 
 if __name__ == "__main__":
     main()

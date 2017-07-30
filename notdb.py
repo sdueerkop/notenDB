@@ -5,6 +5,7 @@ import writeMenu
 import functions
 
 DATABASE = 'test.db'
+FAECHER = ['Deutsch', 'Musik']
 
 def cli():
     parser = argparse.ArgumentParser()

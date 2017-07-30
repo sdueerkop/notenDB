@@ -1,6 +1,7 @@
 import sys
 from PyQt4 import QtGui, QtCore
 import functions
+from notdb import *
 
 class Window(QtGui.QMainWindow):
 
@@ -76,8 +77,7 @@ class Window(QtGui.QMainWindow):
 
         self.l4 = QtGui.QLabel("Fach")
         self.fachMenu = QtGui.QComboBox()
-        self.fachMenu.addItem("Deutsch")
-        self.fachMenu.addItem("Musik")
+        self.fachMenu.addItems(FAECHER)
 
         self.l5 = QtGui.QLabel("Anmerkungen")
         self.ank = QtGui.QLineEdit()
