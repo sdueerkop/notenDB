@@ -1,9 +1,9 @@
-import gui
+import writeMenu
 import functions
 
 def main():
 
-    gui.window()
+    writeMenu.callWriteMenu()
 
 if __name__ == '__main__':
     main()
